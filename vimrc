@@ -11,6 +11,8 @@
 "===================通用======================
 " 不与Vi兼容
 set nocompatible
+"支持鼠标
+set mouse=a
 "支持文件插件
 filetype on
 filetype indent on
@@ -114,6 +116,33 @@ function! Zoom ()
     endif
 endfunction
 nmap <leader>z :call Zoom()<CR>
+
+" Compile function
+" noremap r :call CompileRunGcc()<CR>
+map <F10> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+	exec 'w'
+	if &filetype == 'c'
+		exec '!g++ % -o %<'
+		exec '!time ./%<'
+	elseif &filetype == 'cpp'
+		exec '!g++ -std=c++11 % -Wall -o %<'
+		exec '!time ./%<'
+	elseif &filetype == 'java'
+		exec '!javac %'
+		exec '!time java %<'
+	elseif &filetype == 'python'
+		exec '!time python3 %'
+	elseif &filetype == 'go'
+		exec '!go run .'
+	elseif &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'html'
+		exec '!google-chrome % &'
+	elseif &filetype == 'markdown'
+		exec 'MarkdownPreview'
+	endif
+endfunc
 
 
 " Auto change directory to current dir
@@ -453,3 +482,5 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " K             Show python docs 显示Python文档
 " <Ctrl-Space>  Rope autocomplete  使用Rope进行自动补全
 " <Ctrl-c>g     Rope goto definition  跳转到定义处
+
+
