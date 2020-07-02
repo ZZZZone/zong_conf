@@ -130,44 +130,48 @@ nmap <leader>z :call Zoom()<CR>
 "=================插件列表====================
 call plug#begin('~/.vim/plugged')
 
+" 样式
 Plug 'mhinz/vim-startify' " 启动页
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'preservim/nerdtree' " 目录树
-Plug 'Xuyuanp/nerdtree-git-plugin' "nerdTree 支持Git
-Plug 'kien/ctrlp.vim'  " 文件搜索
-Plug 'easymotion/vim-easymotion' "瞬间移动
-Plug 'tpope/vim-surround' "环绕修改
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " go
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " 代码不全
-Plug 'majutsushi/tagbar'
-Plug 'lfv89/vim-interestingwords' " 高亮插件
-Plug 'tpope/vim-commentary'  " 代码注释
-Plug 'ianva/vim-youdao-translater' "有道翻译
-Plug 'itchyny/vim-cursorword' " 下划线
-Plug 'tpope/vim-surround' " 成对编辑
-Plug 'vimwiki/vimwiki' "wiki
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for' :['markdown', 'vim-plug'] } " markdwon实时预览
-Plug 'mbbill/undotree'
 Plug 'Yggdroot/indentLine' " tab对齐线
+Plug 'itchyny/vim-cursorword' " 下划线
+Plug 'lfv89/vim-interestingwords' " 高亮插件
+Plug 'majutsushi/tagbar' " 大纲
+Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" 文件
+Plug 'preservim/nerdtree' " 目录树
+Plug 'Xuyuanp/nerdtree-git-plugin' "nerdTree插件-支持Git
+" 搜索
+Plug 'kien/ctrlp.vim'  " 文件搜索
+" 补全
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " 代码补全
+"加速coding
+Plug 'easymotion/vim-easymotion' "瞬间移动
+Plug 'tpope/vim-commentary'  " 代码注释
+Plug 'tpope/vim-surround' " 成对编辑
+Plug 'tpope/vim-surround' "环绕修改
+Plug 'mbbill/undotree'
 " git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+"翻译
+Plug 'ianva/vim-youdao-translater' "有道翻译
+" Go
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
+" Python
+" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'last-py2-support' }
+Plug 'davidhalter/jedi-vim',  { 'for': 'python' }
 
+" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for' :['markdown', 'vim-plug'] } " markdwon实时预览
+"wiki
+Plug 'vimwiki/vimwiki' "wiki
 " 配色
 Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'connorholyday/vim-snazzy'
 " Plug 'wadackel/vim-dogrun'
 
 " unuse
-"Plug 'python-mode/python-mode'
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
 call plug#end()
 
 
@@ -443,4 +447,9 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
 
-
+" Python-mode
+" Activate rope
+" Keys: 按键：
+" K             Show python docs 显示Python文档
+" <Ctrl-Space>  Rope autocomplete  使用Rope进行自动补全
+" <Ctrl-c>g     Rope goto definition  跳转到定义处
