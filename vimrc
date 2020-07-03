@@ -190,6 +190,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'}
 " Python
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'last-py2-support' }
 Plug 'davidhalter/jedi-vim',  { 'for': 'python' }
+" Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for' :['markdown', 'vim-plug'] } " markdwon实时预览
@@ -484,3 +485,13 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " <Ctrl-c>g     Rope goto definition  跳转到定义处
 
 
+
+"jedi
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>a"
+let g:jedi#goto_stubs_command = "<leader>s"
+let g:jedi#goto_definitions_command = "<C-b>"
+let g:jedi#documentation_command = ""
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
