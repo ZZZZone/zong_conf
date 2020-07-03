@@ -186,7 +186,7 @@ Plug 'tpope/vim-fugitive'
 "翻译
 Plug 'ianva/vim-youdao-translater' "有道翻译
 " Go
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'}
 " Python
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'last-py2-support' }
 Plug 'davidhalter/jedi-vim',  { 'for': 'python' }
