@@ -9,10 +9,11 @@
 "					基础配置
 "*********************************************
 "===================通用======================
+set autowrite
 " 不与Vi兼容
 set nocompatible
 "支持鼠标
-set mouse=a
+set mouse=v
 "支持文件插件
 filetype on
 filetype indent on
@@ -42,6 +43,7 @@ set guifont=CousineForPowerline:h16
 set list
 " set listchars=tab:▸\ ,trail:▫
 set listchars=tab:\|\ ,trail:▫
+set colorcolumn=120
 "===================搜索======================
 "高亮搜索结果
 set hlsearch
@@ -77,6 +79,11 @@ noremap K 5k
 noremap H 5h
 noremap L 5l
 inoremap jk <Esc>
+"fold
+noremap - zc
+noremap _ zM
+noremap = zO
+noremap + zR
 
 " ===
 " === Tab management
@@ -162,23 +169,27 @@ call plug#begin('~/.vim/plugged')
 " 样式
 Plug 'mhinz/vim-startify' " 启动页
 Plug 'Yggdroot/indentLine' " tab对齐线
-Plug 'itchyny/vim-cursorword' " 下划线
+" Plug 'itchyny/vim-cursorword' " 下划线
 Plug 'lfv89/vim-interestingwords' " 高亮插件
 Plug 'majutsushi/tagbar' " 大纲
 Plug 'vim-airline/vim-airline'
+Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'vim-airline/vim-airline-themes'
 " 文件
 Plug 'preservim/nerdtree' " 目录树
 Plug 'Xuyuanp/nerdtree-git-plugin' "nerdTree插件-支持Git
 " 搜索
-Plug 'kien/ctrlp.vim'  " 文件搜索
+" Plug 'kien/ctrlp.vim'  " 文件搜索
+" FZF
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" Plug 'antoinemadec/coc-fzf'
 " 补全
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " 代码补全
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "加速coding
-Plug 'easymotion/vim-easymotion' "瞬间移动
+Plug 'easymotion/vim-easymotion' "瞬间移动 TODO learn
 Plug 'tpope/vim-commentary'  " 代码注释
-Plug 'tpope/vim-surround' " 成对编辑
-Plug 'tpope/vim-surround' "环绕修改
+Plug 'tpope/vim-surround' " 成对编辑 TODO learn TODO learn
 Plug 'mbbill/undotree'
 " git
 Plug 'airblade/vim-gitgutter'
@@ -189,7 +200,7 @@ Plug 'ianva/vim-youdao-translater' "有道翻译
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'}
 " Python
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'last-py2-support' }
-Plug 'davidhalter/jedi-vim',  { 'for': 'python' }
+" Plug 'davidhalter/jedi-vim',  { 'for': 'python' }
 " Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 
 " Markdown
@@ -206,11 +217,13 @@ call plug#end()
 
 
 "===================主题======================
+"dracula
 let g:dracula_colorterm = 0
 set termguicolors
 colorscheme dracula
 hi Visual  ctermbg=gray ctermfg=green guibg=gray guifg=green
 hi Comment cterm=italic gui=italic ctermfg=248 guifg=#999999
+hi ColorColumn guibg=#44475A
 "=================插件配置====================
 
 " startify
@@ -255,7 +268,7 @@ let g:startify_custom_header = [
 let g:indentLine_color_term = 239
 
 " ctrlp.vim
-let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_map = '<c-p>'
 
 " nerdtree
 nnoremap <leader>v :NERDTreeFind<CR>
@@ -264,13 +277,9 @@ nnoremap <leader>g :NERDTreeToggle<CR>
 " TagBar
 nnoremap <F3> :TagbarToggle<CR>
 
-" Deoplete
-" let g:deoplete#enable_at_startup = 1
-" set completeopt-=preview
 
 " easyMotion
-nmap ss <Plug>(easymotion-s2)
-map <Leader> <Plug>(easymotion-prefix)
+nmap s <Plug>(easymotion-s2)
 
 " youdao trans
 vnoremap <silent> <leader>t :<C-u>Ydv<CR>
@@ -310,9 +319,6 @@ let g:NERDTreeIndicatorMapCustom = {
 			\ "Unknown"   : "?"
 			\ }
 
-" vim-gitgutter
-set updatetime=100
-
 " undotree
 nnoremap <F2> :UndotreeToggle <CR>
 
@@ -322,11 +328,31 @@ nnoremap <F2> :UndotreeToggle <CR>
 " let g:mkdp_auto_start = 1
 
 "================= Golang ====================
+autocmd bufnewfile,bufread *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 " vim-go
 let g:go_fmt_command = "goimports"
-nnoremap <silent> <leader>b :<CR>
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 " 禁用K打开GoDoc
 let g:go_doc_keywordprg_enabled = 0
+let g:go_addtags_transform = "camelcase"
+"highlight
+let g:go_highlight_types = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
+" let g:go_auto_type_info = 1
+" let g:go_highlight_function_calls = 1
+" let g:go_metalinter_autosave = 1
+" let g:go_auto_sameids = 1
+
+autocmd filetype go map <c-n> :cnext<cr>
+autocmd filetype go map <c-m> :cprevious<cr>
+autocmd filetype go nnoremap <leader>a :cclose<cr>
+" autocmd filetype go nmap <leader>t  <plug>(go-test)
+" autocmd filetype go nmap <leader>b  <plug>(go-build)
+
 
 "coc.vim
 "
@@ -365,17 +391,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -415,83 +430,11 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Map function and class text objects
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Mappings using CoCList:
-" Show all diagnostics.
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-
-
-
-" Python-mode
-" Activate rope
-" Keys: 按键：
-" K             Show python docs 显示Python文档
-" <Ctrl-Space>  Rope autocomplete  使用Rope进行自动补全
-" <Ctrl-c>g     Rope goto definition  跳转到定义处
-
-
-
-"jedi
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>a"
-let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = "<C-b>"
-let g:jedi#documentation_command = ""
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
+"
+"fzf
+nmap <c-p> :Files<CR>
+" todo
+" coc-markdown"
+" ctrl-p to fzf
+"
+"
