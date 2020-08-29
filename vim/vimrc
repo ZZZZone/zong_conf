@@ -25,7 +25,7 @@ syntax on
 "显示行号
 set number
 " 相对行号（简写 :set rnu)
-set relativenumber
+" set relativenumber
 "指令Tab多选
 set wildmenu
 "显示指令
@@ -44,6 +44,13 @@ set list
 " set listchars=tab:▸\ ,trail:▫
 set listchars=tab:\|\ ,trail:▫
 set colorcolumn=120
+" if exists('$TMUX')
+"   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+"   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+" else
+"   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+"   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" endif
 "===================搜索======================
 "高亮搜索结果
 set hlsearch
@@ -175,6 +182,7 @@ Plug 'majutsushi/tagbar' " 大纲
 Plug 'vim-airline/vim-airline'
 Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'vim-airline/vim-airline-themes'
+Plug 'solarnz/thrift.vim'
 " 文件
 Plug 'preservim/nerdtree' " 目录树
 Plug 'Xuyuanp/nerdtree-git-plugin' "nerdTree插件-支持Git
@@ -206,7 +214,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'}
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for' :['markdown', 'vim-plug'] } " markdwon实时预览
 "wiki
-Plug 'vimwiki/vimwiki' "wiki
+" Plug 'vimwiki/vimwiki' "wiki
 " 配色
 Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'connorholyday/vim-snazzy'
@@ -272,6 +280,7 @@ let g:indentLine_color_term = 239
 nnoremap <leader>v :NERDTreeFind<CR>
 nnoremap <leader>g :NERDTreeToggle<CR>
 
+let g:NERDTreeShowBookmarks = 1
 " nerdtree-git-plugin
 let g:NERDTreeIndicatorMapCustom = {
 			\ "Modified"  : "✹",
@@ -301,9 +310,12 @@ nmap s <Plug>(easymotion-s2)
 " noremap <leader>tt :<C-u>Yde<CR>
 
 " vim airline
+set statusline^=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#hunks#enabled=0
+" let g:airline#extensions#hunks#enabled=0
+autocmd User CocGitStatusChange {command}
+
 
 " vimwiki
 " vimwiki-markdown
@@ -333,7 +345,7 @@ let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 " 禁用K打开GoDoc
 let g:go_doc_keywordprg_enabled = 0
-let g:go_addtags_transform = "camelcase"
+" let g:go_addtags_transform = "camelcase"
 "highlight
 let g:go_highlight_types = 1
 let g:go_highlight_functions = 1
@@ -368,7 +380,7 @@ set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=100
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -412,6 +424,7 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
+
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -491,7 +504,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_git_blame','non_blame')}
 
 " Mappings for CoCList
 " Show all diagnostics.
@@ -510,3 +523,13 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+"coc-translater
+" popup
+nmap <Leader>t <Plug>(coc-translator-p)
+vmap <Leader>t <Plug>(coc-translator-pv)
+" replace
+nmap <Leader>r <Plug>(coc-translator-r)
+vmap <Leader>r <Plug>(coc-translator-rv)
+
+" :let g:go_debug=['shell-commands']
