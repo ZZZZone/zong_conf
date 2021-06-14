@@ -1,0 +1,89 @@
+TERM: xterm-256color
+
+# 背景不透明度
+background_opacity: 0.9
+#
+window:
+  # Window dimensions (changes require restart)
+  #
+  # Specified in number of columns/lines, not pixels.
+  # If both are `0`, this setting is ignored.
+  dimensions:
+    columns: 80
+    lines: 60
+
+      # Window title
+  title: Alacritty
+
+  # Window class (Linux/BSD only):
+  class:
+    # Application instance name
+    instance: Alacritty
+    # General application class
+    general: Alacritty
+
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 10000
+
+  # Number of lines the viewport will move for every line scrolled when
+  # scrollback is enabled (history > 0).
+  multiplier: 3
+
+
+font:
+  normal:
+    family: Hack Nerd Font
+  # bold:
+  #   family: Hack Nerd Font
+  # italic:
+  #   family: Hack Nerd Font
+  # bold:
+  #   family: Hack Nerd Font
+  size: 18
+  ## Colors (Dracula)
+# Colors (Dracula)
+colors:
+  # Default colors
+  primary:
+    background: '#282a36'
+    foreground: '#f8f8f2'
+
+  # Normal colors
+  normal:
+    black:   '#000000'
+    red:     '#ff5555'
+    green:   '#50fa7b'
+    yellow:  '#f1fa8c'
+    blue:    '#caa9fa'
+    magenta: '#ff79c6'
+    cyan:    '#8be9fd'
+    white:   '#bfbfbf'
+
+  # Bright colors
+  bright:
+    black:   '#575b70'
+    red:     '#ff6e67'
+    green:   '#5af78e'
+    yellow:  '#f4f99d'
+    blue:    '#caa9fa'
+    magenta: '#ff92d0'
+    cyan:    '#9aedfe'
+    white:   '#e6e6e6'
+key_bindings:
+    - { key: Comma,     mods: Command,      command:
+      {program: "open", args: ["~/.config/alacritty/alacritty.yml"]}     }
+    - { key: N,         mods: Command,      action: SpawnNewInstance       }
+    - { key: Space,     mods: Alt,          chars: " "                     }
+    - { key: Back, mods: Super, chars: "\x15" } # delete word/line
+    - { key: Left,     mods: Alt,     chars: "\x1bb"                       } # one word left
+    - { key: Right,    mods: Alt,     chars: "\x1bf"                       } # one word right
+    - { key: Left,     mods: Command, chars: "\x1bOH",   mode: AppCursor   } # Home
+    - { key: Right,    mods: Command, chars: "\x1bOF",   mode: AppCursor   } # End
+
+
+# draw_bold_text_with_bright_colors: true
+
+

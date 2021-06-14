@@ -303,5 +303,6 @@ tmux_conf_theme_right_separator_sub='\uE0B3'
 
 set -g focus-events on
 #真彩色
-set -g default-terminal "xterm-256color"
-set-option -ga terminal-overrides ",xterm-256color:Tc"
+set -g default-terminal "tmux-256color"
+# set-option -sa terminal-overrides ',xterm-256color:RGB'
+set-option -a terminal-overrides ",*256col*:RGB"

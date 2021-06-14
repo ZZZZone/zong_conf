@@ -182,7 +182,7 @@ Plug 'majutsushi/tagbar' " 大纲
 Plug 'vim-airline/vim-airline'
 Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'vim-airline/vim-airline-themes'
-Plug 'solarnz/thrift.vim'
+" Plug 'solarnz/thrift.vim'
 " 文件
 " Plug 'preservim/nerdtree' " 目录树
 " Plug 'Xuyuanp/nerdtree-git-plugin' "nerdTree插件-支持Git
@@ -205,14 +205,14 @@ Plug 'tpope/vim-fugitive'
 "翻译
 " Plug 'ianva/vim-youdao-translater' "有道翻译
 " Go
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'}
 " Python
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'last-py2-support' }
 " Plug 'davidhalter/jedi-vim',  { 'for': 'python' }
 " Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 
 " Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for' :['markdown', 'vim-plug'] } " markdwon实时预览
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for' :['markdown', 'vim-plug'] } " markdwon实时预览
 "wiki
 " Plug 'vimwiki/vimwiki' "wiki
 " 配色
@@ -273,7 +273,7 @@ let g:startify_custom_header = [
 
 
 " indentLine
-let g:indentLine_color_term = 239
+" let g:indentLine_color_term = 239
 
 
 " nerdtree
@@ -310,25 +310,27 @@ nmap s <Plug>(easymotion-s2)
 " noremap <leader>tt :<C-u>Yde<CR>
 
 " vim airline
-set statusline^=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#hunks#enabled=0
-autocmd User CocGitStatusChange {command}
+" set statusline^=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
+
+" let g:airline#extensions#hunks#enabled=1
+" autocmd User CocGitStatusChange {command}
 
 
 " vimwiki
 " vimwiki-markdown
-let g:vimwiki_list = [{
-			\'path': '~/Documents/vimwiki/',
-			\ 'template_path': '~/Documents/vimwiki/templates/',
-			\ 'template_default': 'default',
-			\ 'ext': '.md',
-			\ 'syntax': 'markdown',
-			\ 'path_html': '~/Documents/vimwiki/site_html/',
-			\ 'custom_wiki2html': 'vimwiki_markdown',
-			\ 'html_filename_parameterization': 1,
-			\ 'template_ext': '.tpl'}]
+" let g:vimwiki_list = [{
+" 			\'path': '~/Documents/vimwiki/',
+" 			\ 'template_path': '~/Documents/vimwiki/templates/',
+" 			\ 'template_default': 'default',
+" 			\ 'ext': '.md',
+" 			\ 'syntax': 'markdown',
+" 			\ 'path_html': '~/Documents/vimwiki/site_html/',
+" 			\ 'custom_wiki2html': 'vimwiki_markdown',
+" 			\ 'html_filename_parameterization': 1,
+" 			\ 'template_ext': '.tpl',
+" 			\ }]
 
 
 "================= Markdown ====================
@@ -343,28 +345,34 @@ autocmd bufnewfile,bufread *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 let g:go_fmt_command = "goimports"
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
-" 禁用K打开GoDoc
+
+" 禁用一些和coc-go冲突的功能
+let g:go_def_mapping_enabled = 0 
+let g:go_diagnostics_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
+let g:go_metalinter_autosave = 0
 " let g:go_addtags_transform = "camelcase"
+
 "highlight
+" vim-go comes with an enhanced version of Vim's Go syntax highlighting. It
+" comes with a number of features, most of which are disabled by default.
 let g:go_highlight_types = 1
-let g:go_highlight_functions = 1
 let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
-" let g:go_auto_type_info = 1
-" let g:go_highlight_function_calls = 1
-" let g:go_metalinter_autosave = 1
-" let g:go_auto_sameids = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
+let g:go_fold_enable = ['import']
 
-autocmd filetype go map <c-n> :cnext<cr>
-autocmd filetype go map <c-m> :cprevious<cr>
-autocmd filetype go nnoremap <leader>a :cclose<cr>
+" autocmd filetype go map <c-n> :cnext<cr>
+" autocmd filetype go map <c-m> :cprevious<cr>
+" autocmd filetype go nnoremap <leader>a :cclose<cr>
 " autocmd filetype go nmap <leader>t  <plug>(go-test)
 " autocmd filetype go nmap <leader>b  <plug>(go-build)
 
 
-"fzf
+"================== fzf ======================
 nmap <c-p>w :Rg 
 nmap <c-p>l :Lines 
 nmap <c-p>f :Files<CR>
@@ -372,7 +380,7 @@ nmap <c-p>f :Files<CR>
 " Always enable preview window on the right with 60% width
 let g:fzf_preview_window = 'right:60%'
 
-"coc
+"================== coc ======================
 nmap <c-c> :CocCommand<CR>
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -516,7 +524,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
@@ -547,7 +555,7 @@ vmap <Leader>r <Plug>(coc-translator-rv)
 " =====================
 " == coc-explorer
 " =====================
-nnoremap <leader>g :CocCommand explorer<CR>
+nnoremap <leader>g :CocCommand explorer --position floating<CR>
 
 " =====================
 " == coc-bookmark
@@ -556,3 +564,12 @@ nmap <Leader>b <Plug>(coc-bookmark-toggle)
 nmap <Leader>[b <Plug>(coc-bookmark-next)
 nmap <Leader>]b <Plug>(coc-bookmark-prev)
 
+let g:coc_global_extensions = [
+			\ 'coc-go',
+			\ 'coc-sql',
+			\ 'coc-json',
+			\ 'coc-vimlsp',
+			\ 'coc-explorer',
+			\ 'coc-translator',
+			\ 'coc-thrift-syntax-support',
+			\ ]
