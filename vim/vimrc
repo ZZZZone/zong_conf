@@ -304,6 +304,9 @@ nnoremap <F3> :TagbarToggle<CR>
 " easyMotion
 nmap s <Plug>(easymotion-s2)
 
+" fugitive
+nnoremap <leader>h :Git blame <CR>
+
 " youdao trans
 " vnoremap <silent> <leader>t :<C-u>Ydv<CR>
 " nnoremap <silent> <leader>t :<C-u>Ydc<CR>
