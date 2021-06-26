@@ -43,6 +43,10 @@ brew install tmux
 ln -s zong_conf/tmux/tmux.conf ~/.tmux.conf
 ln -s zong_conf/tmux/tmux.conf.local ~/.tmux.conf.local
 
+
+# tmux plug manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # ====================
 # ==== alacritty =====
 # ====================
