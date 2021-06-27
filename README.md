@@ -76,6 +76,8 @@ nvim -c 'PlugInstall | CocInstall -sync coc-json coc-html coc-go coc-sql coc-vim
 curl -LO https://invisible-island.net/datafiles/current/terminfo.src.gz && gunzip terminfo.src.gz
 /usr/bin/tic -xe tmux-256color terminfo.src
 
+# ====== ideavim ======
+ln -s -v ~/zong_conf/vim/ideavimrc ~/.ideavimrc
 
 # ====================
 # ===== lazygit ======

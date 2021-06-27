@@ -1,0 +1,62 @@
+source ~/.vimrc
+set so=999
+set easymotion
+set surround
+set commentary
+set multiple-cursors
+
+"like coc.nvim
+nmap gd :action GotoDeclarationOnly<CR>
+nmap gf :action GotoDeclaration<CR>
+nmap gi :action GotoImplementation<CR>
+nmap gu :action GotoSuperMethod<CR>
+nmap gt :action GotoTest<CR>
+nmap <C-c> :action GotoAction<CR>
+
+" nmap H :action QuickTypeDefinition<CR>
+nmap H :action QuickJavaDoc<CR>
+
+" go to next/pre error
+nmap [g :action GotoPreviousError<CR>
+nmap ]g :action GotoNextError<CR>
+" go to next/pre change
+nmap ]c :action VcsShowNextChangeMarker<CR>
+nmap [c :action VcsShowPrevChangeMarker<CR>
+
+" like fzf
+nmap <C-p>f :action GotoFile<CR>
+nmap <C-p>t :action GotoClass<CR>
+nmap <C-p>l :action GotoLine<CR>
+nmap <C-p>w :action FindInPath<CR>
+nmap <C-p>b :action ShowBookmarks<CR>
+nmap <C-p>s :action FileStructurePopup<CR>
+
+" translate
+nmap <leader>t :action $ExclusiveTranslateAction<CR>
+vmap <leader>t :action $TranslateTextComponent<CR>
+vmap <leader>r :action $TranslateAndReplaceAction<CR>
+
+nmap <C-O> :action Back<CR>
+nmap <C-I> :action Forward<CR>
+
+nmap <leader>k :action HighlightUsagesInFile<CR>
+nmap <C-N> :action GotoNextElementUnderCaretUsage<CR>
+nmap <C-P> :action GotoPrevElementUnderCaretUsage<CR>
+
+" bookmark
+nmap <leader>b :action ToggleBookmark<CR>
+
+nmap ]b :action GotoPreviousBookmark<CR>
+nmap [b :action GotoNextBookmark<CR>
+
+
+" project like coc-explorer
+nmap <leader>g :action ActivateProjectToolWindow<CR>
+
+" git
+" like git blame
+nmap <leader>h :action Annotate<CR>
+
+"tab
+nmap t[ :action PreviousTab<CR>
+nmap t] :action NextTab<CR>
