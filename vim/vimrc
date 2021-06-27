@@ -175,7 +175,7 @@ call plug#begin('~/.vim/plugged')
 
 " 样式
 Plug 'mhinz/vim-startify' " 启动页
-Plug 'Yggdroot/indentLine' " tab对齐线
+" Plug 'Yggdroot/indentLine' " tab对齐线
 " Plug 'itchyny/vim-cursorword' " 下划线
 Plug 'lfv89/vim-interestingwords' " 高亮插件
 Plug 'majutsushi/tagbar' " 大纲
