@@ -58,7 +58,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # ==== alacritty =====
 # ====================
 brew install alacritty
-brew tap homebrew/cask-eonts
+brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
 ln -s  -v ~/zong_conf/alacritty  ~/.config
 
