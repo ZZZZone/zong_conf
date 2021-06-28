@@ -33,6 +33,10 @@ git clone https://github.com/paulirish/git-open.git ${ZSH_CUSTOM:-~/.oh-my-zsh/c
 # autojump
 brew install autojump
 
+
+# install HomeBrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 # ====================
 # ==== neofetch ======
 # ====================
