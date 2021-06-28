@@ -110,5 +110,10 @@ $(brew --prefix)/opt/fzf/install
 # ==== stretchly =====
 # ====================
 brew install --cask stretchly
+
+# ====================
+# ====== stats =======
+# ====================
+brew install --cask stats
 ```
 
