@@ -12,6 +12,9 @@ use [gpakosz/.tmux](https://github.com/gpakosz/.tmux)
 # ====================
 # ====== zsh =========
 # ====================
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 mv ~/.zshrc ~/.zshrc.backup
 ln -s -v ~/zong_conf/zsh/zshrc ~/.zshrc
 
