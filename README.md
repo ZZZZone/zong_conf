@@ -1,11 +1,6 @@
 ## ZZZZone conf
 
-### VIM
-
-### TMUX
-
-use [gpakosz/.tmux](https://github.com/gpakosz/.tmux)
-
+**如果你有自己的配置，执行命令前记得备份你的配置**
 
 ```sh
 
@@ -47,7 +42,9 @@ brew install neofetch
 # ====================
 brew install tmux
 
+mv ~/.tmux.conf ~/.tmux.conf.backup
 ln -s zong_conf/tmux/tmux.conf ~/.tmux.conf
+mv ~/.tmux.conf.local ~/.tmux.conf.backup.local
 ln -s zong_conf/tmux/tmux.conf.local ~/.tmux.conf.local
 
 
@@ -79,6 +76,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 nvim -c 'PlugInstall | CocInstall -sync coc-json coc-html coc-go coc-sql coc-vimlsp coc-explorer coc-thrift-syntax-support coc-translator|q'
 
 
+# tmux-256 color not necessary
 # https://gist.github.com/bbqtd/a4ac060d6f6b9ea6fe3aabe735aa9d95
 curl -LO https://invisible-island.net/datafiles/current/terminfo.src.gz && gunzip terminfo.src.gz
 /usr/bin/tic -xe tmux-256color terminfo.src
