@@ -95,6 +95,10 @@ brew install lazygit
 brew install ranger
 
 
+# jq is a lightweight and flexible command-line JSON processor.
+brew install jq
+
+
 # ====================
 # ======= fzf ========
 # ====================
