@@ -67,6 +67,7 @@ brew install neovim
 ln -s  -v ~/zong_conf/nvim  ~/.config/nvim
 ln -s  -v ~/zong_conf/vim/vimrc ~/.vimrc
 
+pip3 install neovim
 
 # install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
