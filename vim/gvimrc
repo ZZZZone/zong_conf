@@ -1,3 +1,4 @@
 set transparency=5 "透明度
+set guifont=Menlo:h15 
 " colorscheme dracula
 " set background=dark
