@@ -372,6 +372,7 @@ let g:go_fold_enable = ['import']
 
 let g:go_term_enabled = 1
 let g:go_term_reuse = 1
+
 " autocmd filetype go map <c-n> :cnext<cr>
 " autocmd filetype go map <c-m> :cprevious<cr>
 " autocmd filetype go nnoremap <leader>a :cclose<cr>
@@ -578,6 +579,7 @@ let g:coc_global_extensions = [
 			\ 'coc-translator',
 			\ 'coc-thrift-syntax-support',
 			\ 'coc-snippets',
+			\ 'coc-highlight',
 			\ ]
 
 " =====================
