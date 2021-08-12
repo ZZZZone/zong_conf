@@ -1,0 +1,42 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+    shell:
+        stdout: true
+        stderr: true
+
+- link:
+    #zshrc
+    ~/.zshrc: zsh/zshrc
+    # vim
+    ~/.vimrc: vim/vimrc
+    ~/.gvimrc: vim/gvimrc
+    ~/.ideavimrc: vim/ideavimrc
+    # nvim
+    ~/.config/nvim: nvim
+    # tmux
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux.conf.local: tmux/tmux.conf.local
+    # alacritty
+    ~/.config/alacritty: alacritty
+
+- shell:
+    # zsh
+    # - [chsh -s $(which zsh), Making zsh the default shell]
+    -   # oh-my-zsh
+        command: '[ -d ~/.oh-my-zsh ] || sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
+        description: install oh-my-zsh
+    -   # oh-my-zsh theme powerlevel10k
+        command: '[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k '
+        description: install powerlevel10k
+    - 
+        command: '[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting'
+        description: install zsh-syntax-highlighting
+    - 
+        command: '[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ] || git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions'
+        description: install zsh-autosuggestions
+    - 
+        command: '[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/git-open" ] || git clone https://github.com/paulirish/git-open.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/git-open'
+        description: install zsh-autosuggestions
+
