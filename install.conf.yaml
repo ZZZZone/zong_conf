@@ -63,4 +63,13 @@
     - 
         description: install neofetch
         command: 'type neofetch || brew install neofetch'
+    - 
+        description: install Mac application stretchly
+        command: 'brew list stretchly --cask || brew install stretchly --cask'
+    - 
+        description: install Mac application stats
+        command: 'brew list stats --cask || brew install stats --cask'
+    - 
+        description: install Mac application alacritty
+        command: 'brew list alacritty --cask || brew install alacritty --cask'
 

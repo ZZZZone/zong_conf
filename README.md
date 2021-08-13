@@ -4,10 +4,6 @@
 
 ## 安装
 
-   > master分支的配置是Linux和Mac通用的，如果需要Mac的配置，
-   请选择[MacMini分支](https://github.com/ZZZZone/zong_conf/tree/MacMini)  
-   > `MacMini分支`相比较`master分支`主要是多了一些应用程序的一键安装
-
 **如果你有自己的配置，执行命令前记得备份你的配置。**
 
 1. 一键安装  
