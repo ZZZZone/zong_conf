@@ -25,18 +25,42 @@
     # zsh
     # - [chsh -s $(which zsh), Making zsh the default shell]
     -   # oh-my-zsh
-        command: '[ -d ~/.oh-my-zsh ] || sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
         description: install oh-my-zsh
+        command: '[ -d ~/.oh-my-zsh ] || sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"'
     -   # oh-my-zsh theme powerlevel10k
+        description: install oh-my-zsh theme powerlevel10k
         command: '[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k '
-        description: install powerlevel10k
     - 
+        description: install zsh extention zsh-syntax-highlighting
         command: '[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting'
-        description: install zsh-syntax-highlighting
     - 
+        description: install zsh extention zsh-autosuggestions
         command: '[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ] || git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions'
-        description: install zsh-autosuggestions
     - 
-        command: '[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/git-open" ] || git clone https://github.com/paulirish/git-open.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/git-open'
         description: install zsh-autosuggestions
+        command: '[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/git-open" ] || git clone https://github.com/paulirish/git-open.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/git-open'
+    - 
+        description: install homebrew, basic install manager
+        command: 'type brew || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+    - 
+        description: install autojump
+        command: 'type autojump || brew install autojump'
+    - 
+        description: install tmux
+        command: 'type tmux || brew install tmux'
+    - 
+        description: install neovim
+        command: 'type nvim || brew install neovim'
+    - 
+        description: install lazygit
+        command: 'type lazygit || brew install lazygit'
+    - 
+        description: install ranger
+        command: 'type ranger || (brew install ranger && (type jq || brew install jq))'
+    - 
+        description: install fzf
+        command: 'type fzf || (brew install fzf && $(brew --prefix)/opt/fzf/install)'
+    - 
+        description: install neofetch
+        command: 'type neofetch || brew install neofetch'
 
