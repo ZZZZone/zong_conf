@@ -33,10 +33,10 @@
   - autojump
 - tmux
   - Oh my tmux (gpakosz/.tmux)
-- vim
+- [vim](./vim/README.md)
   - nvim
   - macvim
-  - ideavim
+  - [ideavim](./vim/README.md#ideavimrc)
 - ranger
 - lazygit
 - alacritty

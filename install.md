@@ -1,4 +1,4 @@
-
+# manual install command
 ```sh
 
 # ====================
