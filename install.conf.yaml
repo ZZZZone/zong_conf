@@ -20,6 +20,8 @@
     ~/.tmux.conf.local: tmux/tmux.conf.local
     # alacritty
     ~/.config/alacritty: alacritty
+    ~/.skhdrc: skhd/skhdrc
+    ~/.yabairc: yabai/yabairc
 
 - shell:
     # zsh
@@ -72,4 +74,12 @@
     - 
         description: install Mac application alacritty
         command: 'brew list alacritty --cask || brew install alacritty --cask'
+    -
+        description: install yabai semi-auto
+        command: 'type yabai || brew install koekeishiya/formulae/yabai'
+        # https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#updating-to-the-latest-release
+    - 
+        description: install skhd
+        command: 'type skhd ||(brew install koekeishiya/formulae/skhd && brew services start skhd)'
+        # https://github.com/koekeishiya/skhd
 
