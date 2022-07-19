@@ -16,6 +16,7 @@ shift + alt + ctrl - j : yabai -m window --warp south
 shift + alt + ctrl - k : yabai -m window --warp north
 shift + alt + ctrl - l : yabai -m window --warp east
 
+
 # 旋转窗口布局
 alt - r : yabai -m space --rotate 90
 
@@ -28,6 +29,37 @@ alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 # 挂起窗口至屏幕中央/取消挂起窗口
 alt - t : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
+
+# Maximize
+ctrl + alt - return : yabai -m window --grid 1:1:0:0:1:1
+# 2 split screen
+ctrl + alt - up     : yabai -m window --grid 2:1:0:0:2:1
+# 2 split screen left
+ctrl + alt - left   : yabai -m window --grid 1:2:0:0:1:1
+# 2 split screen right
+ctrl + alt - right  : yabai -m window --grid 1:2:1:1:1:1
+# 2 split screen
+ctrl + alt - down   : yabai -m window --grid 2:1:0:1:2:1
+# 4 split screen top left
+ctrl + alt - u : yabai -m window --grid 2:2:0:0:1:1
+# 4 split screen top right
+ctrl + alt - i : yabai -m window --grid 2:2:1:0:1:1
+# 4 split screen lower left
+ctrl + alt - j : yabai -m window --grid 2:2:0:1:1:1
+# 4 split screen lower right
+ctrl + alt - k : yabai -m window --grid 2:2:1:1:1:1
+# 3 split screen left 1
+ctrl + alt - d : yabai -m window --grid 1:3:0:0:1:1
+# 3 split screen left 2
+ctrl + alt - e : yabai -m window --grid 1:3:0:0:2:1
+# 3 split screen 1
+ctrl + alt - f : yabai -m window --grid 1:3:1:0:1:1
+# 3 split screen right 2
+ctrl + alt - t : yabai -m window --grid 1:3:1:0:2:1
+# 3 split screen right 1
+ctrl + alt - g : yabai -m window --grid 1:3:3:0:1:1
+# 9 split screen centered
+ctrl + alt - c : yabai -m window --grid 3:3:1:1:1:1
 
 # 修改窗口切分方式
 alt - e : yabai -m window--toggle split
@@ -67,7 +99,25 @@ shift + alt - w : yabai -m window --resize top:0:-40
 shift + alt - d : yabai -m window --resize right:40:0
 
 # decrease window size
-shift + cmd - a : yabai -m window --resize left:40:0
-shift + cmd - s : yabai -m window --resize bottom:0:-40
-shift + cmd - w : yabai -m window --resize top:0:40
-shift + cmd - d : yabai -m window --resize right:-40:0
+shift + cmd - d : yabai -m window --resize left:40:0
+shift + cmd - w : yabai -m window --resize bottom:0:-40
+shift + cmd - s : yabai -m window --resize top:0:40
+shift + cmd - a : yabai -m window --resize right:-40:0
+
+
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+hyper - n : yabai -m space --create && index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && yabai -m window --space "${index}" && yabai -m space --focus "${index}"
+
+
+# close current desktop
+hyper -w : yabai -m space --destroy
+
+
+# 左右切换窗口
+hyper - u : yabai -m space --focus prev
+hyper - i : yabai -m space --focus next
+
+# toggle sticky(+float), topmost, picture-in-picture
+# alt - p : yabai -m window --toggle sticky;\
+#           yabai -m window --toggle topmost;\
+#           yabai -m window --toggle pip
