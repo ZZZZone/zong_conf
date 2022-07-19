@@ -1,0 +1,36 @@
+{
+	"title": "Caps Lock to Escape, enable Hyper when held",
+	"rules": [
+		{
+			"description": "Caps Lock to Escape on single press, Hyper on press and hold.",
+			"manipulators": [
+				{
+					"type": "basic",
+					"from": {
+						"key_code": "caps_lock",
+						"modifiers": {
+							"optional": [
+								"any"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "left_shift",
+							"modifiers": [
+								"left_command",
+								"left_control",
+								"left_option"
+							]
+						}
+					],
+					"to_if_alone": [
+						{
+							"key_code": "escape"
+						}
+					]
+				}
+			]
+		}
+	]
+}
