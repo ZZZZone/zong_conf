@@ -220,6 +220,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'}
 Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'connorholyday/vim-snazzy'
 " Plug 'wadackel/vim-dogrun'
+Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+
+
 
 " unuse
 call plug#end()
@@ -590,4 +593,8 @@ let g:lightline = {
      \ 'colorscheme': 'dracula',
 \ }
 
+
+vnoremap <leader>c :OSCYank<CR>
+
+nmap <leader>o <Plug>OSCYank
 
