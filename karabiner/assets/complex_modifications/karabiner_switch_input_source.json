@@ -1,0 +1,163 @@
+{
+	"title": "Switch input source  |  输入法切换",
+	"rules": [
+		{
+			"description": "Tap Shift_L  → Switch input source to English  |  短按左 Shift  → 切换到英文输入法",
+			"manipulators": [
+				{
+					"conditions": [
+						{
+							"input_sources": [
+								{
+									"language": "en"
+								}
+							],
+							"type": "input_source_unless"
+						}
+					],
+					"from": {
+						"key_code": "left_shift",
+						"modifiers": {
+							"optional": [
+								"caps_lock"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "left_shift",
+							"lazy": true
+						}
+					],
+					"to_if_alone": [
+						{
+							"key_code": "f18"
+						}
+					],
+					"to_if_held_down": [
+						{
+							"key_code": "left_shift"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"conditions": [
+						{
+							"input_sources": [
+								{
+									"language": "en"
+								}
+							],
+							"type": "input_source_if"
+						}
+					],
+					"from": {
+						"key_code": "left_shift",
+						"modifiers": {
+							"optional": [
+								"caps_lock"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "left_shift",
+							"lazy": true
+						}
+					],
+					"to_if_alone": [
+						{
+							"key_code": "vk_none"
+						}
+					],
+					"to_if_held_down": [
+						{
+							"key_code": "left_shift"
+						}
+					],
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Tap Shifit_R  → Switch input source to Chinese  |  短按右 Shift → 切换到中文输入法",
+			"manipulators": [
+				{
+					"conditions": [
+						{
+							"input_sources": [
+								{
+									"language": "zh-Hans"
+								}
+							],
+							"type": "input_source_unless"
+						}
+					],
+					"from": {
+						"key_code": "right_shift",
+						"modifiers": {
+							"optional": [
+								"caps_lock"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "right_shift",
+							"lazy": true
+						}
+					],
+					"to_if_alone": [
+						{
+							"key_code": "f18"
+						}
+					],
+					"to_if_held_down": [
+						{
+							"key_code": "right_shift"
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"conditions": [
+						{
+							"input_sources": [
+								{
+									"language": "zh-Hans"
+								}
+							],
+							"type": "input_source_if"
+						}
+					],
+					"from": {
+						"key_code": "right_shift",
+						"modifiers": {
+							"optional": [
+								"caps_lock"
+							]
+						}
+					},
+					"to": [
+						{
+							"key_code": "right_shift",
+							"lazy": true
+						}
+					],
+					"to_if_alone": [
+						{
+							"key_code": "vk_none"
+						}
+					],
+					"to_if_held_down": [
+						{
+							"key_code": "right_shift"
+						}
+					],
+					"type": "basic"
+				}
+			]
+		}
+	]
+}
