@@ -114,8 +114,8 @@ ctrl + alt -w : yabai -m space --destroy
 
 
 # 左右切换窗口
-ctrl + alt - h : yabai -m space --focus prev
-ctrl + alt - l : yabai -m space --focus next
+ctrl + alt - h : yabai -m space --focus "$(~/.config/skhd/move_left_space.sh)"
+ctrl + alt - l : yabai -m space --focus "$(~/.config/skhd/move_right_space.sh)"
 
 # toggle sticky(+float), topmost, picture-in-picture
 # alt - p : yabai -m window --toggle sticky;\
