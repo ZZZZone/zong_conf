@@ -21,6 +21,7 @@
     # alacritty
     ~/.config/alacritty: alacritty
     ~/.skhdrc: skhd/skhdrc
+    ~/.config/skhd: skhd
     ~/.yabairc: yabai/yabairc
     ~/.config/karabiner/assets/complex_modifications: karabiner/assets/complex_modifications
 
@@ -82,5 +83,9 @@
     - 
         description: install skhd
         command: 'type skhd ||(brew install koekeishiya/formulae/skhd && brew services start skhd)'
+        # https://github.com/koekeishiya/skhd
+    - 
+        description: skhd shell
+        command: 'chmod +x ~/.config/skhd/*.sh'
         # https://github.com/koekeishiya/skhd
 
