@@ -24,6 +24,8 @@
     ~/.config/skhd: skhd
     ~/.yabairc: yabai/yabairc
     ~/.config/karabiner/assets/complex_modifications: karabiner/assets/complex_modifications
+    # ranger
+    ~/.config/ranger: ranger
 
 - shell:
     # zsh
