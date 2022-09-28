@@ -155,7 +155,8 @@ export FZF_COMPLETION_TRIGGER='\'
 #== alias
 #=====================
 alias s=neofetch
-alias ra=ranger
+alias ra='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias ran=ranger
 alias lg=lazygit
 
 EDITOR=nvim
