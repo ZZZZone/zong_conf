@@ -183,7 +183,7 @@ Plug 'majutsushi/tagbar' " 大纲
 Plug 'itchyny/lightline.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'vim-airline/vim-airline-themes'
-" Plug 'solarnz/thrift.vim'
+Plug 'solarnz/thrift.vim'
 " 文件
 " Plug 'preservim/nerdtree' " 目录树
 " Plug 'Xuyuanp/nerdtree-git-plugin' "nerdTree插件-支持Git
@@ -222,6 +222,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'wadackel/vim-dogrun'
 Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 
+Plug 'https://github.com/diepm/vim-rest-console'
 
 
 " unuse
@@ -581,7 +582,6 @@ let g:coc_global_extensions = [
 			\ 'coc-vimlsp',
 			\ 'coc-explorer',
 			\ 'coc-translator',
-			\ 'coc-thrift-syntax-support',
 			\ 'coc-snippets',
 			\ 'coc-highlight',
 			\ ]
