@@ -1,13 +1,13 @@
 return {
-	{
-		"Mofiqul/dracula.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd [[colorscheme dracula]]
-			-- vim.cmd[[colorscheme dracula-soft]]
-		end,
-	},
+	-- {
+	-- 	"Mofiqul/dracula.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd [[colorscheme dracula]]
+	-- 		-- vim.cmd[[colorscheme dracula-soft]]
+	-- 	end,
+	-- },
 	-- {
 	-- 	"folke/tokyonight.nvim",
 	-- 	lazy = false,
@@ -17,20 +17,20 @@ return {
 	-- 		vim.cmd [[colorscheme tokyonight-moon]]
 	-- 	end,
 	-- },
-	-- {
-	-- 	"dracula/vim",
-	-- 	lazy = false,  -- make sure we load this during startup if it is your main colorscheme
-	-- 	priority = 1000, -- make sure to load this before all the other start plugins
-	-- 	config = function()
-	-- 		vim.cmd([[
-	--     let g:dracula_colorterm = 0
-	-- 	colorscheme dracula
-	-- 	hi Visual  ctermbg=gray ctermfg=green guibg=gray guifg=green
-	-- 	hi Comment cterm=italic gui=italic ctermfg=248 guifg=#999999
-	-- 	hi ColorColumn guibg=#44475A
-	--   ]])
-	-- 	end,
-	-- },
+	{
+		"dracula/vim",
+		lazy = false,  -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			vim.cmd([[
+	    let g:dracula_colorterm = 0
+			colorscheme dracula
+		  hi Visual  ctermbg=gray " ctermfg=green guibg=gray guifg=green
+		" hi Comment cterm=italic gui=italic ctermfg=248 guifg=#999999
+		" hi ColorColumn guibg=#44475A
+	  ]])
+		end,
+	},
 	"mhinz/vim-startify",
 	{
 		'nvim-lualine/lualine.nvim',
@@ -38,10 +38,10 @@ return {
 		config = function()
 			-- Lua
 			require('lualine').setup {
-				options = {
-					-- theme = 'tokyonight'
-					theme = 'dracula-nvim'
-				}
+				-- options = {
+				-- 	-- theme = 'tokyonight'
+				-- 	-- theme = 'dracula-nvim'
+				-- }
 			}
 		end
 	},
