@@ -50,8 +50,9 @@ vim.keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
 
 
-vim.keymap.set("n", "<C-L>", ":bnext<CR>")
-vim.keymap.set("n", "<C-H>", ":bprevious<CR>")
+vim.keymap.set("n", "<C-L>", ":BufferNext<CR>", opts)
+vim.keymap.set("n", "<C-H>", ":BufferPrevious<CR>", opts)
+-- vim.keymap.set("n", "<C-X>", ":bwipeout<CR>")
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -59,3 +60,31 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<space>w', vim.diagnostic.setloclist)
 vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']g', vim.diagnostic.goto_next)
+
+
+-- 关闭当前窗口或当前缓冲区
+function close_window_or_buffer()
+  -- 获取当前窗口数量
+  local num_windows = vim.fn.winnr('$')
+
+  -- 如果只有一个窗口，则关闭当前缓冲区
+  if num_windows == 1 then
+    vim.cmd('bwipeout')
+  else
+    -- 关闭当前窗口
+    vim.cmd('silent! close')
+
+    -- 获取新的窗口数量
+    local new_num_windows = vim.fn.winnr('$')
+
+    -- 如果新的窗口数量与旧的相同，则说明无法关闭窗口（例如只有两个水平分割的窗口时）
+    -- 这种情况下关闭当前缓冲区
+    if new_num_windows == num_windows then
+      vim.cmd('bwipeout')
+    end
+
+  end
+end
+
+-- 将函数绑定到快捷键
+vim.api.nvim_set_keymap('n', '<C-x>', '<cmd>lua close_window_or_buffer()<CR>', opts)

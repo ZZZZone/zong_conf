@@ -55,5 +55,7 @@
 			"wait",
 			"markNext:diagnosticError"
 		]
-	}
+	},
+  "typescript.format.enable": false,
+  "snippets.ultisnips.pythonPrompt": false
 }

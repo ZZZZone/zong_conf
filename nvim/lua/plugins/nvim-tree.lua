@@ -58,7 +58,8 @@ return {
 				on_attach = my_on_attach,
 			}
 
-			vim.keymap.set("n", "<leader>g", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>g", ":NvimTreeFindFileToggle<CR>", { noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>G", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 		end,
 	},
 }

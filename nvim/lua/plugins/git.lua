@@ -3,7 +3,7 @@ return {
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require('gitsigns').setup({
-				signs = {
+				signs      = {
 					add          = { hl = 'GitSignsAdd', text = '▎', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
 					change       = { hl = 'GitSignsChange', text = '░', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
 					delete       = { hl = 'GitSignsDelete', text = '_', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
@@ -11,6 +11,8 @@ return {
 					changedelete = { hl = 'GitSignsChange', text = '▒', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
 					untracked    = { hl = 'GitSignsAdd', text = '┆', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
 				},
+				signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+				numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
 			})
 			vim.keymap.set("n", "[c", ":Gitsigns prev_hunk<CR>", { noremap = true, silent = true })
 			vim.keymap.set("n", "]c", ":Gitsigns next_hunk<CR>", { noremap = true, silent = true })

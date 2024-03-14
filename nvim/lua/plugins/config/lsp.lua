@@ -26,6 +26,10 @@ lspconfig.gopls.setup {
 	cmd = { "gopls" }
 }
 
+lspconfig.thriftls.setup {
+	capabilities = capabilities,
+}
+
 
 
 -- Use LspAttach autocommand to only map the following keys
@@ -40,9 +44,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 		local opts = { buffer = ev.buf }
 		-- vim.keymap.set('n', '<space>D', vim.lsp.buf.declaration, opts)  -- not useful
-		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 		vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition, opts)
 		--- instead by ../telescope.lua
+		-- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 		-- vim.keymap.set('n', 'gf', vim.lsp.buf.references, opts)
 		-- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 		vim.keymap.set('n', 'H', vim.lsp.buf.hover, opts)
