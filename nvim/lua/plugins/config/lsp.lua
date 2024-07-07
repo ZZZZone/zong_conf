@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup {
-	ensure_installed = { "lua_ls", "gopls" },
+	ensure_installed = { "lua_ls", "gopls" , "tsserver"},
 }
 
 require("fidget").setup {
@@ -27,6 +27,12 @@ lspconfig.gopls.setup {
 }
 
 lspconfig.thriftls.setup {
+	capabilities = capabilities,
+}
+lspconfig.tsserver.setup {
+	capabilities = capabilities,
+}
+lspconfig.cssls.setup {
 	capabilities = capabilities,
 }
 

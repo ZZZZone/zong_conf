@@ -312,3 +312,5 @@ set -g @plugin 'tmux-plugins/tpm'
 
 # prefix + {Ctrl-s} - save;  prefix + {Ctrl-r} - restore.  https://github.com/tmux-plugins/tmux-resurrect
 set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+set -s set-clipboard on
