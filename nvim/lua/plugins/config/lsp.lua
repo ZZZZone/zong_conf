@@ -35,6 +35,9 @@ lspconfig.tsserver.setup {
 lspconfig.cssls.setup {
 	capabilities = capabilities,
 }
+lspconfig.clangd.setup {
+	capabilities = capabilities,
+}
 
 
 
