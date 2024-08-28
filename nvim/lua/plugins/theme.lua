@@ -75,7 +75,7 @@ return {
 			}
 		end,
 	},
-	"rainbow-delimiters.nvim", -- 配合treesitter，不同括号颜色区分
+	-- "rainbow-delimiters.nvim", -- 配合treesitter，不同括号颜色区分
 	-- {
 	-- 	"akinsho/bufferline.nvim", -- buffer分割线
 	-- 	config = function()

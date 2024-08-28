@@ -30,7 +30,7 @@ return {
 		},
 		config = function()
 			local actions = require("telescope.actions")
-			local trouble = require("trouble.providers.telescope")
+			local trouble = require("trouble.sources.telescope")
 
 			local telescope = require("telescope")
 
@@ -41,8 +41,8 @@ return {
 						"go.sum",
 					},
 					mappings = {
-						i = { ["<c-s>"] = trouble.open_with_trouble },
-						n = { ["<c-s>"] = trouble.open_with_trouble },
+						i = { ["<c-s>"] = trouble.open },
+						n = { ["<c-s>"] = trouble.open },
 					},
 				},
 			}
