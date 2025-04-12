@@ -306,6 +306,8 @@ set -g focus-events on
 # set -g default-terminal "tmux-256color"
 # set-option -sa terminal-overrides ',xterm-256color:RGB'
 # set-option -a terminal-overrides ",*256col*:RGB"
+set-option -a terminal-features 'screen-256color:RGB'
+# set-option -a terminal-overrides 'screen-256color:Tc'
 
 # -- plug manager ----------------------------------------------------------------
 set -g @plugin 'tmux-plugins/tpm'

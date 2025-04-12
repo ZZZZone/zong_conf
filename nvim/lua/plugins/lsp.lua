@@ -22,6 +22,13 @@ local plugins = {
 		opts = {},
 		config = function(_, opts) require 'lsp_signature'.setup(opts) end
 	},
+	{
+		"mfussenegger/nvim-dap",
+	},
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+	{
+		"theHamsta/nvim-dap-virtual-text",
+	}
 }
 
 return plugins
