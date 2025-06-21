@@ -38,7 +38,8 @@ vim.opt.foldlevelstart = 99
 vim.cmd([[
   augroup RememberFolds
     autocmd!
-    autocmd BufWinLeave * mkview
-    autocmd BufWinEnter * silent! loadview
+    autocmd BufWinLeave * if &buftype == '' && bufname('%') != '' | silent! mkview | endif
+    autocmd BufWinEnter * if &buftype == '' && bufname('%') != '' | silent! loadview | endif
   augroup END
 ]])
+
