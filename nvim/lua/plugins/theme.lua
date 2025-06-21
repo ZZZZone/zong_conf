@@ -79,7 +79,6 @@ return {
 			}
 		end
 	},
-
 	{
 		"nvim-treesitter/nvim-treesitter", -- 语法高亮
 		config = function()
@@ -235,5 +234,9 @@ return {
 		opts = {
 			-- configurations go here
 		},
+	},
+	{
+		"folke/zen-mode.nvim",
+		opts = {}
 	}
 }

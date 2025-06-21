@@ -1,12 +1,3 @@
-require("mason").setup()
-require("mason-lspconfig").setup {
-	ensure_installed = { "lua_ls", "gopls" , "ts_ls"},
-}
-
-require("fidget").setup {
-	-- options
-}
-
 -- Setup language servers.
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -21,24 +12,6 @@ lspconfig.lua_ls.setup {
 		},
 	},
 }
-lspconfig.gopls.setup {
-	capabilities = capabilities,
-	cmd = { "gopls" }
-}
-
-lspconfig.thriftls.setup {
-	capabilities = capabilities,
-}
-lspconfig.ts_ls.setup {
-	capabilities = capabilities,
-}
-lspconfig.cssls.setup {
-	capabilities = capabilities,
-}
-lspconfig.clangd.setup {
-	capabilities = capabilities,
-}
-
 
 
 -- Use LspAttach autocommand to only map the following keys

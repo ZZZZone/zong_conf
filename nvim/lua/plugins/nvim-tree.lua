@@ -2,6 +2,13 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = {
+			{
+				'b0o/nvim-tree-preview.lua',
+				dependencies = {
+					'nvim-lua/plenary.nvim',
+					'3rd/image.nvim', -- Optional, for previewing images
+				},
+			},
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
@@ -83,6 +90,11 @@ return {
 					-- }
 				},
 				on_attach = my_on_attach,
+				update_focused_file = {
+					enable = true, -- 启用自动定位功能
+					update_cwd = false, -- 是否自动切换 nvim-tree 的根目录到当前文件所在目录
+					ignore_list = {}, -- 忽略的文件类型或文件名，默认空
+				},
 			}
 			-- vim.keymap.set("n", "<leader>g", function()
 			-- 	local api = require("nvim-tree.api")
@@ -102,21 +114,9 @@ return {
 			-- 	end
 			-- end, { noremap = true, silent = true })
 
-			vim.keymap.set("n", "<C-g>", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
-			vim.keymap.set("n", "<leader>g", ":NvimTreeFindFileToggle<CR>", { noremap = true, silent = true })
+			vim.keymap.set("n", "<C-g>", ":NvimTreeFindFileToggle<CR>", { noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>g", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
 			vim.keymap.set("n", "<leader>G", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 		end,
-	},
-	{
-		'kyazdani42/nvim-tree.lua',
-		dependencies = {
-			{
-				'b0o/nvim-tree-preview.lua',
-				dependencies = {
-					'nvim-lua/plenary.nvim',
-					'3rd/image.nvim', -- Optional, for previewing images
-				},
-			},
-		},
 	},
 }

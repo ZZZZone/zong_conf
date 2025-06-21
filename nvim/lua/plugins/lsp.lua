@@ -1,20 +1,35 @@
 local plugins = {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		opts = {
 			ensure_installed = {
+				"lua_ls",
 				"gopls",
 			},
 		},
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
+		opts = {
+			automatic_enable = {
+				exclude = { -- 手动启动lua_ls,有额外配置,其他的自动启用
+					"lua_ls"
+				}
+			}
+		},
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
 	},
 	{
 		"j-hui/fidget.nvim", -- lsp加载进度显示
+		config = function()
+			require("fidget").setup({})
+		end,
 	},
 	{
 		"ray-x/lsp_signature.nvim",
