@@ -1,8 +1,8 @@
 return {
-	"tpope/vim-commentary",
+	"tpope/vim-commentary", -- 快速注释
 	"lfv89/vim-interestingwords",
 	"tpope/vim-surround",
-	"easymotion/vim-easymotion",
+	-- "easymotion/vim-easymotion",
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -14,7 +14,11 @@ return {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
-		}
+		},
+		dependencies = {
+			"echasnovski/mini.icons",
+			"nvim-tree/nvim-web-devicons",
+		},
 	},
 	{
 		'windwp/nvim-autopairs',
@@ -30,9 +34,7 @@ return {
 				trim = false,        -- Trim surrounding whitespaces before copy
 				tmux_passthrough = true, -- Use tmux passthrough (requires tmux: set -g allow-passthrough on)
 			}
-			vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, { expr = true })
-			vim.keymap.set('n', '<leader>cc', '<leader>c_', { remap = true })
 			vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
-		end
+		end,
 	}
 }

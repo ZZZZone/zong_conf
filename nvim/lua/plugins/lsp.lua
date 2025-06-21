@@ -23,12 +23,11 @@ local plugins = {
 		config = function(_, opts) require 'lsp_signature'.setup(opts) end
 	},
 	{
-		"mfussenegger/nvim-dap",
+		"aznhe21/actions-preview.nvim",
+		config = function()
+			vim.keymap.set({ "n" }, "<space>ca", require("actions-preview").code_actions)
+		end,
 	},
-	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
-	{
-		"theHamsta/nvim-dap-virtual-text",
-	}
 }
 
 return plugins

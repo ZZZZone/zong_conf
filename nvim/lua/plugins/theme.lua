@@ -1,13 +1,16 @@
 return {
-	-- {
-	-- 	"Mofiqul/dracula.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		vim.cmd [[colorscheme dracula]]
-	-- 		-- vim.cmd[[colorscheme dracula-soft]]
-	-- 	end,
-	-- },
+	{
+		"Mofiqul/dracula.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd [[
+				colorscheme dracula
+			 	hi Visual  ctermbg=blue guibg=blue
+			]]
+			-- vim.cmd[[colorscheme dracula-soft]]
+		end,
+	},
 	-- {
 	-- 	"folke/tokyonight.nvim",
 	-- 	lazy = false,
@@ -17,27 +20,48 @@ return {
 	-- 		vim.cmd [[colorscheme tokyonight-moon]]
 	-- 	end,
 	-- },
-	{
-		"dracula/vim",
-		lazy = false,  -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			vim.cmd([[
-	    let g:dracula_colorterm = 0
-		colorscheme dracula
-		hi Visual  ctermbg=gray ctermfg=green guibg=gray guifg=green
-		hi Comment cterm=italic gui=italic ctermfg=248 guifg=#999999
-		hi ColorColumn guibg=#44475A
-	  ]])
-		end,
-	},
+	-- {
+	-- 	"dracula/vim",
+	-- 	-- lazy = false,  -- make sure we load this during startup if it is your main colorscheme
+	-- 	-- priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	config = function()
+	-- 		vim.cmd([[
+	--   let g:dracula_colorterm = 0
+	-- 	colorscheme dracula
+	-- 	hi Visual  ctermbg=blue guibg=blue
+	-- 	highlight NonText guifg=#999999
+	-- 	" hi BufferDefaultCurrentMod cterm=bold gui=bold guifg=green
+	-- 	" hi BufferDefaultInactiveMod cterm=bold gui=bold guifg=NvimLightGreen
+	-- 	" hi BufferDefaultVisibleMod cterm=bold gui=bold guifg=yellow
+	-- 	" hi Comment cterm=italic gui=italic ctermfg=248 guifg=#999999
+	-- 	" hi ColorColumn guibg=#44475A
+	--   ]])
+	-- 	end,
+	-- },
 	-- "mhinz/vim-startify",
 	{
 		'nvimdev/dashboard-nvim',
 		event = 'VimEnter',
 		config = function()
 			require('dashboard').setup {
+				shortcut_type = 'number',
 				-- config
+				config = {
+					shortcut = {
+						{ desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+						{
+							icon = ' ',
+							icon_hl = '@variable',
+							desc = 'Files',
+							group = 'Label',
+							action = 'Telescope find_files',
+							key = 'f',
+						},
+						{ action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = "Quit", icon = " ", key = "q" },
+
+					},
+					mru = { enable = false },
+				}
 			}
 		end,
 		dependencies = { { 'nvim-tree/nvim-web-devicons' } }
@@ -61,9 +85,18 @@ return {
 		config = function()
 			require 'nvim-treesitter.configs'.setup {
 				-- 添加不同语言
-				ensure_installed = { "go", "vim", "vimdoc", "bash", "c", "cpp", "javascript", "json", "lua", "python", "typescript", "tsx", "css", "rust", "markdown", "markdown_inline" }, -- one of "all" or a list of languages
+				ensure_installed = { "vim", "vimdoc", "bash", "c", "cpp", "javascript", "json", "lua", "python", "typescript", "tsx", "css", "rust", "markdown", "markdown_inline" }, -- one of "all" or a list of languages
 
-				highlight = { enable = true },
+				highlight = {
+					enable = true,
+					disable = function(lang, buf)
+						local max_filesize = 100 * 1024 -- 100 KB
+						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+						if ok and stats and stats.size > max_filesize then
+							return true
+						end
+					end,
+				},
 				indent = { enable = true },
 
 				-- 不同括号颜色区分
@@ -75,7 +108,8 @@ return {
 			}
 		end,
 	},
-	-- "rainbow-delimiters.nvim", -- 配合treesitter，不同括号颜色区分
+	-- "p00f/nvim-ts-rainbow", -- 配合treesitter，不同括号颜色区分
+	"hiphish/rainbow-delimiters.nvim",
 	-- {
 	-- 	"akinsho/bufferline.nvim", -- buffer分割线
 	-- 	config = function()
@@ -103,7 +137,7 @@ return {
 				messages = {
 					-- NOTE: If you enable messages, then the cmdline is enabled automatically.
 					-- This is a current Neovim limitation.
-					enabled = false,        -- enables the Noice messages UI
+					enabled = false, -- enables the Noice messages UI
 				},
 				routes = {
 					{
@@ -124,8 +158,8 @@ return {
 				},
 				-- you can enable a preset for easier configuration
 				presets = {
-					bottom_search = true,    -- use a classic bottom cmdline for search
-					command_palette = true,  -- position the cmdline and popupmenu together
+					bottom_search = false,   -- use a classic bottom cmdline for search
+					command_palette = false, -- position the cmdline and popupmenu together
 					long_message_to_split = true, -- long messages will be sent to a split
 					inc_rename = false,      -- enables an input dialog for inc-rename.nvim
 					lsp_doc_border = true,   -- add a border to hover docs and signature help
@@ -182,16 +216,16 @@ return {
 	-- 	end
 	-- },
 	"solarnz/thrift.vim",
-	-- "xiyaowong/transparent.nvim",
+	"xiyaowong/transparent.nvim",
 	{
-		'romgrk/barbar.nvim',
+		'romgrk/barbar.nvim',         -- tab
 		dependencies = {
 			'lewis6991/gitsigns.nvim',  -- OPTIONAL: for git status
 			'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
 		},
 	},
 	{
-		"utilyre/barbecue.nvim",
+		"utilyre/barbecue.nvim", -- This is a VS Code like winbar that uses nvim-navic
 		name = "barbecue",
 		version = "*",
 		dependencies = {

@@ -41,8 +41,8 @@ vim.keymap.set("n", "<leader>sh", "<C-w>s")
 vim.api.nvim_set_keymap('n', '<leader>r', ':luafile $MYVIMRC<CR>', opts)
 
 
-vim.keymap.set('n', '<leader>h', ':Git blame <CR>', opts)
-vim.keymap.set('n', '<leader>s', '<Plug>(easymotion-s2)', opts)
+-- vim.keymap.set('n', '<leader>h', ':Git blame <CR>', opts)
+-- vim.keymap.set('n', '<C-p>e', '<Plug>(easymotion-s2)', opts)
 
 
 -- v
