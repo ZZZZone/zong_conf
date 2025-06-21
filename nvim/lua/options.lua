@@ -27,3 +27,18 @@ vim.opt.splitbelow = true
 
 
 vim.opt.mouse:append("a")
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = true -- 启用折叠
+vim.opt.foldlevel = 99    -- 打开文件时不自动折叠
+vim.opt.foldlevelstart = 99
+
+-- 自动保存/恢复折叠视图
+vim.cmd([[
+  augroup RememberFolds
+    autocmd!
+    autocmd BufWinLeave * mkview
+    autocmd BufWinEnter * silent! loadview
+  augroup END
+]])

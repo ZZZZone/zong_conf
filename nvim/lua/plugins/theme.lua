@@ -98,6 +98,10 @@ return {
 				},
 				indent = { enable = true },
 
+				fold = {
+					enable = true,
+				},
+
 				-- 不同括号颜色区分
 				rainbow = {
 					enable = true,

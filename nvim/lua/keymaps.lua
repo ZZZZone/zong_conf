@@ -52,6 +52,7 @@ vim.keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "<C-L>", ":BufferNext<CR>", opts)
 vim.keymap.set("n", "<C-H>", ":BufferPrevious<CR>", opts)
+vim.keymap.set('n', '<C-x>', ':BufferClose<CR>', opts)
 -- vim.keymap.set("n", "<C-X>", ":bwipeout<CR>")
 
 -- Global mappings.
@@ -62,5 +63,3 @@ vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']g', vim.diagnostic.goto_next)
 
 
--- 将函数绑定到快捷键
-vim.api.nvim_set_keymap('n', '<C-x>', ':BufferClose<CR>', opts)
