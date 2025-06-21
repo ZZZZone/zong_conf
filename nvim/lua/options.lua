@@ -6,6 +6,7 @@ vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 vim.wo.wrap = false
+vim.opt.cursorline = true
 
 -- Tab
 vim.opt.tabstop = 2
@@ -18,7 +19,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- 系统剪切板
--- vim.opt.clipboard:append("unnamedplus")
+vim.opt.clipboard:append("unnamedplus")
 
 -- 默认新窗口右和下
 vim.opt.splitright = true

@@ -21,6 +21,8 @@ require("lazy").setup({
 	require("plugins.go"),
 	require("plugins.cmp"),
 	require("plugins.telescope"),
+	require("plugins.copilot"),
+	require("plugins.dap"),
 })
 
 

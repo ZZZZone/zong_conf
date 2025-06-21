@@ -2,3 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "tmux/tmux"]
+	path = tmux/tmux
+	url = https://github.com/gpakosz/.tmux.git

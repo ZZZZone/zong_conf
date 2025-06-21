@@ -45,5 +45,8 @@ yabai -m rule --add app="^Archive Utility$" manage=off
 yabai -m rule --add app="^Logi Options+$" manage=off
 yabai -m rule --add app="^Alfred Preferences$" manage=off
 yabai -m rule --add app="^Stats$" manage=off
+yabai -m rule --add app="^系统设置$" manage=off
+yabai -m rule --add app="^微信$" manage=off
+yabai -m rule --add app="^网易云音乐$" manage=off
 
 echo "yabai configuration loaded.."
