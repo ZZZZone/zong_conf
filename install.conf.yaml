@@ -16,7 +16,7 @@
     # nvim
     ~/.config/nvim: nvim
     # tmux
-    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux.conf: tmux/tmux/.tmux.conf
     ~/.tmux.conf.local: tmux/tmux.conf.local
     # alacritty
     ~/.config/alacritty: alacritty
