@@ -23,6 +23,7 @@ require("lazy").setup({
 	require("plugins.telescope"),
 	require("plugins.copilot"),
 	require("plugins.dap"),
+	require("plugins.ufo"),
 })
 
 

@@ -1,7 +1,7 @@
 -- Setup language servers.
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-lspconfig.lua_ls.setup {
+vim.lsp.config('lua_ls', {
 	capabilities = capabilities,
 	settings = {
 		Lua = {
@@ -11,7 +11,8 @@ lspconfig.lua_ls.setup {
 			},
 		},
 	},
-}
+})
+vim.lsp.enable('lua_ls')
 
 
 -- Use LspAttach autocommand to only map the following keys
