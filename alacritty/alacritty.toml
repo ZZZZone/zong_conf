@@ -78,7 +78,7 @@ history = 10000
 multiplier = 3
 
 [window]
-opacity = 0.99
+opacity = 0.9
 title = "Alacritty"
 
 [window.class]
